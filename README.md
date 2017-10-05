@@ -13,3 +13,29 @@ $ npm install
 $ react-native run-android
 ```
 
+## React-Native-Router-Flux
+
+Install dependencies:
+``` bash
+$ npm install --save react-navigation
+$ npm install --save react-native-router-flux
+$ npm install --save mobx
+$ npm install --save mobx-react
+$ npm install --save prop-types
+```
+
+Change your Router.js to:
+``` javascript
+const RouterComponent = () => {
+    return (
+        <Router>
+            <Scene key="root">
+            <Scene key="login" component={LoginForm} title="Please Login" />
+            </Scene>
+        </Router>
+    )
+}
+```
+
+If any issues:
+- https://github.com/aksonov/react-native-router-flux#breaking-changes-compared-to-v3
