@@ -1,15 +1,39 @@
 import React, { Component } from 'react'
-import { Card, CardSection, Input, Button } from './common'
-import { connect } from 'redux'
-import { emailChanged } from '../actions'
-
+import { connect } from 'react-redux'
+import { Text } from 'react-native'
+import { Card, CardSection, Input, Button, LoadingSpinner } from './common'
+import { emailChanged, passwordChanged, loginUser } from '../actions'
 
 class LoginForm extends Component {
     onEmailChange(text) {
-        
+        this.props.emailChanged(text)
+    }
+
+    onPasswordChange(text) {
+        this.props.passwordChanged(text)
+    }
+
+    onLoginAttempt() {
+        const { email, password } = this.props
+
+        this.props.loginUser({ email, password })
+    }
+
+    renderLoginButton() {
+        if (this.props.isLoggingIn) return (
+            <LoadingSpinner size="large" />
+        )
+
+        return (
+            <Button onPress={() => this.onLoginAttempt()}>
+                Login
+            </Button>
+        )
     }
 
     render() {
+        const { errorTextStyle } = styles
+
         return (
             <Card>
                 <CardSection>
@@ -17,6 +41,7 @@ class LoginForm extends Component {
                         label="Email"
                         placeholder="email@gmail.com"
                         onChangeText={(text) => this.onEmailChange(text)}
+                        value={this.props.email}
                     />
                 </CardSection>
 
@@ -24,18 +49,43 @@ class LoginForm extends Component {
                     <Input
                         label="Password"
                         placeholder="password"
+                        onChangeText={(text) => this.onPasswordChange(text)}
+                        value={this.props.password}
                         secureTextEntry
                     />
                 </CardSection>
 
+                <Text style={errorTextStyle}>
+                    {this.props.error}
+                </Text>
+
                 <CardSection>
-                    <Button onPress={() => null}>
-                        Login
-                    </Button>
+                    {this.renderLoginButton()}
                 </CardSection>
             </Card>
         )
     }
 }
 
-export default connect(null, { emailChanged })(LoginForm)
+const styles = {
+    errorTextStyle: {
+        fontSize: 20,
+        alignSelf: 'center',
+        color: 'red'
+    }
+}
+
+const mapStateToProps = ({ auth }) => {
+    const { email, password, isLoggingIn, error } = auth
+
+    return {
+        email,
+        password,
+        isLoggingIn,
+        error
+    }
+}
+
+export default connect(mapStateToProps, {
+    emailChanged, passwordChanged, loginUser
+})(LoginForm)
