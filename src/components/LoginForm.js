@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import { Card, CardSection, Input, Button, LoadingSpinner } from './common'
 import { emailChanged, passwordChanged, loginUser } from '../actions'
 

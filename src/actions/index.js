@@ -1,3 +1,4 @@
+import { Keyboard } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import firebase from 'firebase'
 import {
@@ -23,12 +24,13 @@ export const passwordChanged = (text) => {
 }
 
 const loginUserSuccess = (dispatch, user) => {
+    Keyboard.dismiss()
     dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: user
     })
 
-    Actions.employeeList()
+    Actions.main()
 }
 
 const loginUserFail = (dispatch) => {
