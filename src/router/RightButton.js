@@ -16,7 +16,8 @@ const RightButton = () => {
 
 const styles = StyleSheet.create({
     addButtonStyle: {
-        paddingRight: 10,
+        fontSize: 18,
+        paddingRight: 15,
         color: 'blue'
     }
 })
