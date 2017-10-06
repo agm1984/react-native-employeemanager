@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import { Card, CardSection, Input, Button, LoadingSpinner } from './common'
 import { emailChanged, passwordChanged, loginUser } from '../actions'
 
@@ -31,9 +31,20 @@ class LoginForm extends Component {
         )
     }
 
-    render() {
-        const { errorTextStyle } = styles
+    renderError() {
+        const { errorContainerStyle, errorTextStyle } = styles
+        const { error } = this.props
 
+        if (error) return (
+            <CardSection style={errorContainerStyle}>
+                <Text style={errorTextStyle}>
+                    {error}
+                </Text>
+            </CardSection>
+        )
+    }
+
+    render() {
         return (
             <Card>
                 <CardSection>
@@ -55,9 +66,7 @@ class LoginForm extends Component {
                     />
                 </CardSection>
 
-                <Text style={errorTextStyle}>
-                    {this.props.error}
-                </Text>
+                {this.renderError()}
 
                 <CardSection>
                     {this.renderLoginButton()}
@@ -67,13 +76,18 @@ class LoginForm extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
+    errorContainerStyle: {
+        flex: 1
+    },
     errorTextStyle: {
+        flex: 1,
         fontSize: 20,
-        alignSelf: 'center',
-        color: 'red'
+        lineHeight: 20,
+        textAlign: 'center',
+        color: 'red',
     }
-}
+})
 
 const mapStateToProps = ({ auth }) => {
     const { email, password, isLoggingIn, error } = auth

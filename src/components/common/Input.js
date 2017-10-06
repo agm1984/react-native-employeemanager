@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput } from 'react-native'
+import { StyleSheet, View, Text, TextInput } from 'react-native'
 
 // Boolean component props with true can omit the ={true} part
 // ie: secureTextEntry
@@ -21,7 +21,7 @@ const Input = ({ label, placeholder, onChangeText, value, autoCorrect, secureTex
     )
 }
 
-const styles = {
+const styles = StyleSheet.create({
     containerStyle: {
         height: 40,
         flex: 1,
@@ -41,6 +41,6 @@ const styles = {
         lineHeight: 23,
         flex: 2
     }
-}
+})
 
 export { Input }

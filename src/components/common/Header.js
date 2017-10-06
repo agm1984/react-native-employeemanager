@@ -1,6 +1,6 @@
 // import libraries for making a component
 import React from 'react'
-import { Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 // make a component
 const Header = (props) => {
@@ -13,7 +13,7 @@ const Header = (props) => {
     )
 }
 
-const styles = {
+const styles = StyleSheet.create({
     viewStyle: {
         backgroundColor: '#F8F8F8',
         justifyContent: 'center',
@@ -27,7 +27,7 @@ const styles = {
     textStyle: {
         fontSize: 20
     }
-}
+})
 
 // make a component available to other parts of the app
 export { Header }

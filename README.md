@@ -30,7 +30,7 @@ const RouterComponent = () => {
     return (
         <Router>
             <Scene key="root">
-            <Scene key="login" component={LoginForm} title="Please Login" />
+                <Scene key="login" component={LoginForm} title="Please Login" />
             </Scene>
         </Router>
     )
@@ -39,3 +39,34 @@ const RouterComponent = () => {
 
 If any issues:
 - https://github.com/aksonov/react-native-router-flux#breaking-changes-compared-to-v3
+
+## React-Navigation
+> This package.json snippet was added for unit test purposes:
+
+See: https://reactnavigation.org/docs/guides/redux
+
+``` javascript
+"jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+        "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ]
+},
+```
+
+## React-Dev-Tools
+> Used for efficient data collection and CSS editing
+
+See: https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx-source
+
+### Install
+``` bash
+$ npm install --save-dev babel-plugin-transform-react-jsx-source
+```
+
+### .babelrc
+``` javascript
+{
+    "plugins": ["transform-react-jsx-source"]
+}
+```
