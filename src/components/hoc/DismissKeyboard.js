@@ -14,7 +14,6 @@ const DismissKeyboardHOC = (Comp) => {
 
 export default DismissKeyboardHOC
 
-
 // Usage
 // import { DismissKeyboardView } from './hoc/location'
 // ...
