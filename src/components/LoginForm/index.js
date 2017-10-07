@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet, Text } from 'react-native'
-import { Card, CardSection, Input, Button, LoadingSpinner } from './common'
-import { emailChanged, passwordChanged, loginUser } from '../actions'
+import { Card, CardSection, Input, Button, LoadingSpinner } from '../common'
+import { emailChanged, passwordChanged, loginUser } from '../auth/actions'
 
 class LoginForm extends Component {
     onEmailChange(text) {
@@ -101,5 +101,7 @@ const mapStateToProps = ({ auth }) => {
 }
 
 export default connect(mapStateToProps, {
-    emailChanged, passwordChanged, loginUser
+    emailChanged,
+    passwordChanged,
+    loginUser
 })(LoginForm)

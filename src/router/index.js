@@ -2,7 +2,7 @@
 // the different screens a user can navigate to
 import React from 'react'
 import { Stack, Scene, Router } from 'react-native-router-flux'
-import LoginForm from '../components/LoginForm'
+import LoginForm from '../components/Auth/LoginForm'
 import EmployeeList from '../components/EmployeeList'
 import EmployeeCreate from '../components/EmployeeCreate'
 import RightButton from './RightButton'
