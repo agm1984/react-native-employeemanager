@@ -8,6 +8,7 @@ class EmployeeCreate extends Component {
     onSaveChanges() {
         const { name, phone, shift } = this.props
 
+        // Default value for shift
         this.props.employeeCreate({ name, phone, shift: shift || 'Monday' })
     }
 

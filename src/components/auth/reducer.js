@@ -37,7 +37,7 @@ export default (state = INITIAL_STATE, action) => {
 
         case LOGIN_USER_SUCCESS:
             return {
-                ...state,
+                ...state,             // this line can probably be removed
                 ...INITIAL_STATE,     // spread in initial state settings
                 user: action.payload
             }

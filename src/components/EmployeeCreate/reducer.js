@@ -1,4 +1,7 @@
-import { EMPLOYEE_UPDATE } from './types'
+import {
+    EMPLOYEE_UPDATE,
+    EMPLOYEE_CREATE
+} from './types'
 
 const INITIAL_STATE = {
     name: '',
@@ -11,8 +14,14 @@ export default (state = INITIAL_STATE, action) => {
         case EMPLOYEE_UPDATE: {
             // action.payload === { prop: 'name', value: 'Jane' }
             const { prop, value } = action.payload
-            return { ...state, [prop]: value }
+            return {
+                ...state,
+                [prop]: value
+            }
         }
+
+        case EMPLOYEE_CREATE:
+            return INITIAL_STATE
 
         default:
             return state
