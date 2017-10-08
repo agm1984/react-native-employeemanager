@@ -45,6 +45,7 @@ class EmployeeList extends Component {
 }
 
 const mapStateToProps = (state) => {
+    
     // Convert employees object into an array of objects
     const employees = Object.keys(state.employees).map((uid) => ({ ...state.employees[uid], uid }))
     return { employees }

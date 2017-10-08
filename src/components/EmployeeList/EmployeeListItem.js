@@ -7,7 +7,7 @@ class EmployeeListItem extends Component {
     onRowPress() {
         // This form needs to know what employee is being loaded
         const { employee } = this.props
-        Actions.employeeCreate({ employee })
+        Actions.employeeEdit({ employee })
     }
 
     render() {

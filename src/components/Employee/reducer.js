@@ -1,6 +1,6 @@
 import {
     EMPLOYEE_UPDATE,
-    EMPLOYEE_CREATE
+    CLEAR_EMPLOYEE_FORM
 } from './types'
 
 const INITIAL_STATE = {
@@ -14,13 +14,15 @@ export default (state = INITIAL_STATE, action) => {
         case EMPLOYEE_UPDATE: {
             // action.payload === { prop: 'name', value: 'Jane' }
             const { prop, value } = action.payload
+
             return {
                 ...state,
+                // Mutate single property only
                 [prop]: value
             }
         }
 
-        case EMPLOYEE_CREATE:
+        case CLEAR_EMPLOYEE_FORM:
             return INITIAL_STATE
 
         default:

@@ -4,7 +4,8 @@ import React from 'react'
 import { Stack, Scene, Router } from 'react-native-router-flux'
 import LoginForm from '../components/LoginForm'
 import EmployeeList from '../components/EmployeeList'
-import EmployeeCreate from '../components/EmployeeCreate'
+import EmployeeCreate from '../components/Employee/EmployeeCreate'
+import EmployeeEdit from '../components/Employee/EmployeeEdit'
 import RightButton from './RightButton'
 
 // If there is no initial prop passed, the first scene will be loaded first.
@@ -32,6 +33,11 @@ const RouterComponent = () => {
                         key="employeeCreate"
                         component={EmployeeCreate}
                         title="Create Employee"
+                    />
+                    <Scene
+                        key="employeeEdit"
+                        component={EmployeeEdit}
+                        title="Edit Employee"
                     />
                 </Scene>
             </Stack>

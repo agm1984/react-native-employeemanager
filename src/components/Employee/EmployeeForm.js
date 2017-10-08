@@ -1,17 +1,10 @@
 import React, { Component } from 'react'
-import { StyleSheet, Picker, Text } from 'react-native'
+import { StyleSheet, View, Text, Picker } from 'react-native'
 import { connect } from 'react-redux'
-import { Card, CardSection, Input, Button } from '../common'
-import { employeeUpdate, employeeCreate } from './actions'
+import { employeeUpdate } from './actions'
+import { CardSection, Input } from '../common'
 
-class EmployeeCreate extends Component {
-    onSaveChanges() {
-        const { name, phone, shift } = this.props
-
-        // Default value for shift
-        this.props.employeeCreate({ name, phone, shift: shift || 'Monday' })
-    }
-
+class EmployeeForm extends Component {
     renderPickerDays() {
         const daysOfTheWeek = [
             { id: 0, label: 'Sunday' },
@@ -30,7 +23,7 @@ class EmployeeCreate extends Component {
         const { pickerCardSectionStyle, pickerTextStyle, pickerStyle } = styles
 
         return (
-            <Card>
+            <View>
                 <CardSection>
                     <Input
                         label="Name"
@@ -61,13 +54,7 @@ class EmployeeCreate extends Component {
                         {this.renderPickerDays()}
                     </Picker>
                 </CardSection>
-
-                <CardSection>
-                    <Button onPress={() => this.onSaveChanges()}>
-                        Create
-                    </Button>
-                </CardSection>
-            </Card>
+            </View>
         )
     }
 }
@@ -98,7 +85,4 @@ const mapStateToProps = ({ employeeForm }) => {
     }
 }
 
-export default connect(mapStateToProps, {
-    employeeUpdate,
-    employeeCreate
-})(EmployeeCreate)
+export default connect(mapStateToProps, { employeeUpdate })(EmployeeForm)

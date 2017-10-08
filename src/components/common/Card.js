@@ -2,11 +2,11 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
 // could destructure props for children
-const Card = (props) => {
+const Card = ({ children, style }) => {
     const { containerStyle } = styles
     return (
-        <View style={containerStyle}>
-            {props.children}
+        <View style={[containerStyle, style]}>
+            {children}
         </View>
     )
 }
